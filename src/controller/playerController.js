@@ -46,6 +46,6 @@ export const getPlayerById = (req, res) => {
          if (err) {
              res.send(err);
          }
-         res.json({message: 'Successfully deletetd player'});
+         res.json({message: 'Successfully deleteted player'});
     });
  }
