@@ -12,7 +12,7 @@ export const PlayerSchema = new Schema({
         required: true,
     },
     shirtNumber: {
-        type: number,
+        type: Number,
     },
     isCoach: {
         type: Boolean,
