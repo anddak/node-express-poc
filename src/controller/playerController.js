@@ -1,51 +1,56 @@
 import mongoose from 'mongoose';
-import { PlayerSchema } from '../model/playerModel';
+import PlayerSchema from '../model/playerModel';
 
 const Player = mongoose.model('Player', PlayerSchema);
 
 export const addNewPlayer = (req, res) => {
-    let newPlayer = new Player(req.body);
+  const newPlayer = new Player(req.body);
 
-    newPlayer.save((err, Player) => {
-        if (err) {
-            res.send(err);
-        }
-        res.json(Player);
-    })
-}
+  newPlayer.save((err, Player) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(Player);
+  });
+};
 
 export const getPlayers = (req, res) => {
-   Player.find({}, (err, Player) => {
-        if (err) {
-            res.send(err);
-        }
-        res.json(Player);
-   });
-}
+  Player.find({}, (err, Player) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(Player);
+  });
+};
 
 export const getPlayerById = (req, res) => {
-    Player.findById(req.params.playerId, (err, Player) => {
-         if (err) {
-             res.send(err);
-         }
-         res.json(Player);
-    });
- }
+  Player.findById(req.params.playerId, (err, Player) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(Player);
+  });
+};
 
- export const updatePlayer = (req, res) => {
-    Player.findOneAndUpdate({_id: req.params.playerId}, req.body, {new: true}, (err, Player) => {
-         if (err) {
-             res.send(err);
-         }
-         res.json(Player);
-    });
- }
+export const updatePlayer = (req, res) => {
+  Player.findOneAndUpdate(
+    { _id: req.params.playerId },
+    req.body,
+    { new: true },
+    (err, Player) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(Player);
+    },
+  );
+};
 
- export const deletePlayer = (req, res) => {
-    Player.findOneAndDelete({_id: req.params.playerId}, (err) => {
-         if (err) {
-             res.send(err);
-         }
-         res.json({message: 'Successfully deleteted player'});
-    });
- }
+export const deletePlayer = (req, res) => {
+  Player.findOneAndDelete({ _id: req.params.playerId }, err => {
+    if (err) {
+      res.send(err);
+    }
+    res.json({ message: 'Successfully deleteted player' });
+  });
+};

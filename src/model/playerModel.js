@@ -1,32 +1,34 @@
 import mongoose from 'mongoose';
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
-export const PlayerSchema = new Schema({
-    firstName: {
-        type: String,
-        required: true,
-    },
-    lastName: {
-        type: String,
-        required: true,
-    },
-    shirtNumber: {
-        type: Number,
-    },
-    isCoach: {
-        type: Boolean,
-        default: false,
-    },
-    team: {
-        type: String,
-    },
-    speed: {
-        type: Number,
-        enum: [1,2,3]
-    },
-    createdDate: {
-        type: Date,
-        default: Date.now()
-    },
+const PlayerSchema = new Schema({
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  shirtNumber: {
+    type: Number,
+  },
+  isCoach: {
+    type: Boolean,
+    default: false,
+  },
+  team: {
+    type: String,
+  },
+  speed: {
+    type: Number,
+    enum: [1, 2, 3],
+  },
+  createdDate: {
+    type: Date,
+    default: Date.now(),
+  },
 });
+
+export default PlayerSchema;

@@ -10,13 +10,12 @@ const PORT = 4000;
 //mongo connection
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/footballDB', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-
-})
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 //bodyParser setup
-app.use(bodyparser.urlencoded({extended: true}))
+app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 
 //cors setup
@@ -25,9 +24,9 @@ app.use(cors());
 routes(app);
 
 app.get('/', (req, res) => {
-    res.send(`Application is running on port ${PORT}.`)
+  res.send(`Application is running on port ${PORT}.`);
 });
 
 app.listen(PORT, () =>
-    console.log(`Application running on port ${PORT}.`)
+  console.log(`Application running on port ${PORT}.`),
 );
